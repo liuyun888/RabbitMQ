@@ -1,0 +1,29 @@
+先运行 TestCustomer4USA 专门用于接受美国专题消息
+再运行 TestCustomer4News 专门用于接受新闻专题消息
+最后运行 TestProducer ，分别在 四个路由："usa.news", "usa.weather", "europe.news", "europe.weather" 上发布 "美国新闻", "美国天气", "欧洲新闻", "欧洲天气".
+于是就能在消费者端看到 不同的主题收到对应的消息了。
+
+
+exe中有需要的安装包
+1.运行 otp_win64_18.1.exe， 然后一直默认下一步下一步即可，没有什么特别说明的。
+使用默认设置安装完毕之后，会在如图所示的路径看到 erl.exe 文件，它就相当于 jdk里的 java.exe。 这就说明安装好了。
+2.与 jdk类似，也要配置路径，只是不用配置 ERL_HOME，直接配置 PATH就可以了。
+  右键点击我的电脑-> 属性 -> 高级系统设置 -> 高级 -> 环境变量 -> 系统变量 -> Path
+  然后增加如图所示的一条新的 路径。 这个路径就是 erlang 安装程序 截图里所用的路径。
+3.使用快捷键 win+r, 然后输入 cmd, 接着运行 erl。看到版本号标识成功
+
+4.运行 rabbitmq-server-3.6.5.exe，使用默认设置，下一步下一步即可。
+  安装成功之后，在如图所示位置可以看到这些文件就表示安装OK了。
+5.运行如下命令，可以做到对 rabbitmq的插件配置。
+
+  "C:\Program Files\RabbitMQ Server\rabbitmq_server-3.6.5\sbin\rabbitmq-plugins.bat" enable rabbitmq_management
+
+6.管理员身份运行以下命令以重启 rabbitmq：
+
+   net stop RabbitMQ && net start RabbitMQ
+7. rabbitmq 有一个 管理界面：
+  http://127.0.0.1:15672
+  输入
+  账号： guest
+  密码： guest
+  就登陆进去啦
